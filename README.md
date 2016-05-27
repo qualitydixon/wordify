@@ -1,6 +1,8 @@
 # react-kickstart
 My own little React boilerplate.
 
+[DEMO](http://qualitydixon.github.io/react-kickstart/)
+
 ## In this project...
 
 - React
