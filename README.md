@@ -1,5 +1,14 @@
 # react-kickstart
-A basic ReactJS project. This was made to save time setting up react-router, webpack, babel, less, etc. Credit to Tyler McGinnis and his excellent [React Fundamentals course](https://github.com/ReactjsProgram/React-Fundamentals). This is essentially a modified version of one of the branches from his course.
+My own little React boilerplate.
+
+## In this project...
+
+- React
+- React Router
+- Webpack
+- LESS
+- ESLint (standard)
+- Hot Loader
 
 ## Installation
 
