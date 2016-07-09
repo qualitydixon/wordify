@@ -37,4 +37,4 @@ export const order = {
   4: ' trillion '
 }
 
-export const maxEntry = 999999999999999.99
+export const maxLength = 15

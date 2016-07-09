@@ -1,3 +1,8 @@
+import { maxLength } from './constants'
+
+/*
+  Splits the given number into groups three and pushes each group to an array.
+*/
 export function getGroups (num) {
   let ans = []
   while (num > 0) {
@@ -9,7 +14,6 @@ export function getGroups (num) {
 }
 
 export function isInvalidInput (num) {
-  const maxLength = 15
   const isTooLarge = Math.floor(num / 1).toString().length > maxLength
   const isNumeric = /^\d*\.?\d*$/.test(num)
 
@@ -19,7 +23,7 @@ export function isInvalidInput (num) {
 export function remSubString (num) {
   const rem = Number((num % 1).toFixed(2).split('.').pop())
 
-  return rem === 0 ? '' : ` and ${rem}/100 dollars`
+  return rem === 0 ? ' dollars' : ` and ${rem}/100 dollars`
 }
 
 /*
@@ -27,4 +31,15 @@ export function remSubString (num) {
 */
 export function wholeNum (num) {
   return Math.floor(num / 1)
+}
+
+/*
+  Removes commas and spaces from input.
+*/
+export function formatNum (num) {
+  if (num !== null) {
+    num = num.replace(/,| /g, '')
+  }
+
+  return Number(num)
 }

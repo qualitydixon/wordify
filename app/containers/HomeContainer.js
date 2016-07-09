@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Home from '../components/Home'
-import { getGroups, isInvalidInput, remSubString, wholeNum } from '../config/helpers'
+import { getGroups, isInvalidInput, remSubString, wholeNum, formatNum } from '../config/helpers'
 import { convert, order } from '../config/constants'
 
 export default class HomeContainer extends Component {
@@ -18,7 +18,7 @@ export default class HomeContainer extends Component {
       })
     } else {
       this.setState({
-        num: Number(input)
+        num: formatNum(input)
       })
     }
   }
