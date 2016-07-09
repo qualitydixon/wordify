@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-export default function Home (props) {
+export default function Home ({ onUpdateNumber, numberAsString, num }) {
   return (
     <div>
       <form
@@ -12,13 +12,13 @@ export default function Home (props) {
           className='form-control'
           placeholder='Ex: 123456.78'
           type='text'
-          onChange={props.onUpdateNumber}
+          onChange={onUpdateNumber}
         />
       </form>
       <div className='result'>
-        {props.num === null
+        {num === null
           ? 'Enter a number'
-          : props.numberAsString}
+          : numberAsString}
       </div>
     </div>
   )

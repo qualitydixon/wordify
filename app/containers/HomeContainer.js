@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Home from '../components/Home'
-import { getGroups } from '../config/helpers'
-import { convert, order, maxEntry } from '../config/constants'
+import { getGroups, isInvalidInput, remSubString, wholeNum } from '../config/helpers'
+import { convert, order } from '../config/constants'
 
 export default class HomeContainer extends Component {
   constructor (props) {
@@ -11,35 +11,35 @@ export default class HomeContainer extends Component {
     }
   }
   handleUpdateNumber (e) {
-    console.log(e.target.value)
-    this.setState({
-      num: Number(e.target.value)
-    })
+    const input = e.target.value
+    if (input === '') {
+      this.setState({
+        num: null
+      })
+    } else {
+      this.setState({
+        num: Number(input)
+      })
+    }
   }
-  convertToString (num) {
-    console.log(num)
-    if (num === 0) { return 'zero' }
-    if (num < 0 || num > maxEntry) { return 'not a valid entry' }
-    const rem = (num % 1).toFixed(2).split('.').pop()
-    let ans = ` and ${rem}/100 dollars`
-    let intNum = Math.floor(num / 1)
-    getGroups(intNum).forEach((elem, idx, arr) => {
+  convertToWords (num) {
+    if (isInvalidInput(num)) { return 'Not a valid entry.' }
+    let ans = remSubString(num)
+    if (num < 1) { return 'zero' + ans }
+    getGroups(wholeNum(num)).forEach((group, idx, arr) => {
       let subString = ''
-      if (elem > 99) {
-        const hundreds = Math.floor(elem / 100)
+      if (group > 99) {
+        const hundreds = Math.floor(group / 100)
         subString += convert[hundreds] + ' hundred '
-        elem = elem % 100
+        group = group % 100
       }
-      if (elem > 0) {
-        const tens = Math.floor(elem / 10) * 10
-        const ones = elem % 10
-        if (elem > 20) {
-          subString += convert[Math.floor(elem / 10) * 10]
-          if (ones > 0) {
-            subString += '-' + convert[ones]
-          }
+      if (group > 0) {
+        const ones = group % 10
+        if (group > 20) {
+          subString += convert[Math.floor(group / 10) * 10]
+          subString += ones === 0 ? '' : '-' + convert[ones]
         } else {
-          subString += ' ' + convert[elem]
+          subString += ' ' + convert[group]
         }
       }
       if (subString !== '') {
@@ -54,7 +54,7 @@ export default class HomeContainer extends Component {
     return (
       <Home
         onUpdateNumber={(e) => this.handleUpdateNumber(e)}
-        numberAsString={this.convertToString(this.state.num)}
+        numberAsString={this.convertToWords(this.state.num)}
         num={this.state.num}
       />
     )
