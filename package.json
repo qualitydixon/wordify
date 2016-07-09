@@ -1,7 +1,7 @@
 {
-  "name": "react-kickstart",
+  "name": "wordify",
   "version": "1.0.0",
-  "description": "react, react-router, webpack, babel. All wired up and ready to go.",
+  "description": "Simple applet that converts a number to a sentence form.",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --hot --inline",
@@ -16,7 +16,6 @@
   "author": "Mike Dixon <qualitydixon@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.9.1",
     "babel-core": "^6.7.2",
     "less": "^2.6.1",
     "less-loader": "^2.2.3",
