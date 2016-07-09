@@ -3,5 +3,7 @@
   // The number of spaces a tab is equal to.
   "editor.tabSize": 2,
   // When enabled, will open files in a new window instead of reusing an existing instance.
-  "window.openFilesInNewWindow": false
+  "window.openFilesInNewWindow": false,
+  // Controls if opened editors should show in tabs or not.
+  "workbench.editor.showTabs": false
 }

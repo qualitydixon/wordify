@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Home from '../components/Home'
-import { getGroups, isInvalidInput, remSubString, wholeNum, formatNum, capFirstChar } from '../config/helpers'
+import { getGroups, isInvalidInput, remSubString, wholeNum, formatInput, capFirstChar } from '../config/helpers'
 import { convert, order } from '../config/constants'
 
 export default class HomeContainer extends Component {
@@ -18,7 +18,7 @@ export default class HomeContainer extends Component {
       })
     } else {
       this.setState({
-        num: formatNum(input)
+        num: formatInput(input)
       })
     }
   }
@@ -29,16 +29,14 @@ export default class HomeContainer extends Component {
     getGroups(wholeNum(num)).forEach((group, idx, arr) => {
       let subString = ''
       const hundreds = Math.floor(group / 100)
-      const tens = group % 100
-      const ones = tens % 10
+      const tens = Math.floor(((group % 100) / 10)) * 10
+      const ones = group % 10
       subString += hundreds > 0 ? convert[hundreds] + ' hundred ' : ''
-      if (tens > 0) {
-        if (tens > 20) {
-          subString += convert[Math.floor(tens / 10) * 10]
-          subString += ones === 0 ? '' : '-' + convert[ones]
-        } else {
-          subString += ' ' + convert[tens]
-        }
+      if (tens >= 20) {
+        subString += convert[tens]
+        subString += ones === 0 ? '' : '-' + convert[ones]
+      } else {
+        subString += tens + ones === 0 ? '' : ' ' + convert[tens + ones]
       }
       subString += subString !== '' ? order[idx] : ''
       ans = subString + ans

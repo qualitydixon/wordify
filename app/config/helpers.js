@@ -36,12 +36,12 @@ export function wholeNum (num) {
 /*
   Removes commas and spaces from input.
 */
-export function formatNum (num) {
-  if (num !== null) {
-    num = num.replace(/,| /g, '')
+export function formatInput (str) {
+  if (str !== '') {
+    str = str.replace(/,| /g, '')
   }
 
-  return Number(num)
+  return Number(str)
 }
 
 export function capFirstChar (str) {
