@@ -26,7 +26,7 @@ Below I've pulled out the code relevant to the problem solution so you can get t
 
 `convertToWords` from `HomeContainer.js`
 
-```
+```javascript
 convertToWords (num) {
   if (isInvalidInput(num)) { return 'Not a valid entry.' }
   let ans = remSubString(num)
@@ -53,7 +53,7 @@ convertToWords (num) {
 
 `helpers.js`
 
-```
+```javascript
 import { maxLength } from './constants'
 
 /*
@@ -109,7 +109,7 @@ export function capFirstChar (str) {
 
 `constants.js`
 
-```
+```javascript
 export const convert = {
   0: 'zero',
   1: 'one',
