@@ -9,7 +9,7 @@ export default function Home ({ onUpdateNumber, numberAsString, num }) {
           e.preventDefault()
         }}>
         <input
-          className='form-control'
+          className='input'
           placeholder='Ex: 123456.78'
           type='text'
           onChange={onUpdateNumber}

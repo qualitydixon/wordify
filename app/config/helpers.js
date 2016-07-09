@@ -1,7 +1,7 @@
 import { maxLength } from './constants'
 
 /*
-  Splits the given number into groups three and pushes each group to an array.
+  Splits the given number into groups of three and pushes each group to an array.
 */
 export function getGroups (num) {
   let ans = []
@@ -42,4 +42,10 @@ export function formatNum (num) {
   }
 
   return Number(num)
+}
+
+export function capFirstChar (str) {
+  str = str.trim()
+
+  return str.charAt(0).toUpperCase() + str.slice(1)
 }
