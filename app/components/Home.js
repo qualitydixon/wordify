@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-export default function Home ({ onUpdateNumber, numberAsString, num }) {
+export default function Home ({ onUpdateNumber, numberAsString }) {
   return (
     <div>
       <form
@@ -16,9 +16,7 @@ export default function Home ({ onUpdateNumber, numberAsString, num }) {
         />
       </form>
       <div className='result'>
-        {num === null
-          ? 'Enter a number'
-          : numberAsString}
+        {numberAsString}
       </div>
     </div>
   )
@@ -26,6 +24,5 @@ export default function Home ({ onUpdateNumber, numberAsString, num }) {
 
 Home.propTypes = {
   onUpdateNumber: PropTypes.func.isRequired,
-  numberAsString: PropTypes.string.isRequired,
-  num: PropTypes.number
+  numberAsString: PropTypes.string.isRequired
 }

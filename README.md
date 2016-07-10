@@ -10,9 +10,8 @@ Fork and clone this repo, run `npm install`, then `npm run start`. Then go to `h
 
 ## Problem Statement
 
-------------
--Exercise 1-
-------------
+Exercise 1
+
 Write some code that will accept an amount and convert it to the
 appropriate string representation.
  

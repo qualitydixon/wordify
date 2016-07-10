@@ -23,7 +23,8 @@ export default class HomeContainer extends Component {
     }
   }
   convertToWords (num) {
-    if (isInvalidInput(num)) { return 'Not a valid entry.' }
+    if (num === null) { return 'Enter a number' }
+    if (isInvalidInput(num)) { return 'Not a valid entry' }
     let ans = remSubString(num)
     if (num < 1) { return 'Zero' + ans }
     getGroups(wholeNum(num)).forEach((group, idx, arr) => {
