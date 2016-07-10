@@ -50,7 +50,6 @@ export default class HomeContainer extends Component {
       <Home
         onUpdateNumber={(e) => this.handleUpdateNumber(e)}
         numberAsString={this.convertToWords(this.state.num)}
-        num={this.state.num}
       />
     )
   }
