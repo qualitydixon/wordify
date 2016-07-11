@@ -49,3 +49,16 @@ export function capFirstChar (str) {
 
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
+
+/* --------------------------- */
+/*       Spiral Helpers        */
+/* --------------------------- */
+
+export function generateInts (num) {
+  let arr = []
+  for (let i = 0; i <= num; i++) {
+    arr.push(i)
+  }
+
+  return arr
+}
