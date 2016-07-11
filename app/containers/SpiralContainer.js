@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Spiral from '../components/Spiral'
-import { generateInts } from '../config/helpers'
+import { generateArray } from '../config/helpers'
 
 export default class SpiralContainer extends Component {
   constructor (props) {
@@ -14,7 +14,7 @@ export default class SpiralContainer extends Component {
     const input = e.target.value
     this.setState({
       num: input,
-      intArr: generateInts(Number(input))
+      intArr: generateArray(Number(input))
     })
   }
   getX (int) {

@@ -54,7 +54,7 @@ export function capFirstChar (str) {
 /*       Spiral Helpers        */
 /* --------------------------- */
 
-export function generateInts (num) {
+export function generateArray (num) {
   const delta = 30
   let arr = [{
     display: 0,
@@ -67,17 +67,15 @@ export function generateInts (num) {
   let currY = 0
   let dirX = 1
   let dirY = 0
-  let isVert = false
   for (let i = 1; i <= num; i++) {
     arr.push({
       display: i,
       x: arr[i - 1].x + (delta * dirX),
       y: arr[i - 1].y + (delta * dirY)
     })
-    if (!isVert) {
+    if (dirY === 0) {
       currX++
       if (currX > maxX) {
-        isVert = true
         currX = 0
         currY++
         maxX += 1
@@ -87,7 +85,6 @@ export function generateInts (num) {
     } else {
       currY++
       if (currY > maxY) {
-        isVert = false
         currY = 0
         currX++
         maxY += 1
@@ -95,7 +92,6 @@ export function generateInts (num) {
         dirY = 0
       }
     }
-    console.log('x', arr[i].x)
   }
 
   return arr

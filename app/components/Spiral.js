@@ -15,13 +15,15 @@ export default function Spiral ({ onUpdateNumber, intArr }) {
           onChange={onUpdateNumber}
         />
       </form>
-      <div className='result'>
-        {'Spiral!'}
-      </div>
       <div className='spiralContainer'>
         <svg width='1000' height='500'>
           {intArr.map((elem, idx) =>
-            <text key={idx} x={elem.x} y={elem.y} fontFamily='Verdana' fontSize='12' fill='white'>
+            <text
+              key={idx}
+              x={elem.x}
+              y={elem.y}
+              fontSize='12'
+              fill='white'>
             {elem.display}
             </text>)}
         </svg>
