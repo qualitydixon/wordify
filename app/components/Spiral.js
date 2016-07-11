@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-export default function Spiral ({ onUpdateNumber, num, intArr }) {
+export default function Spiral ({ onUpdateNumber, intArr }) {
   return (
     <div>
       <form
@@ -19,10 +19,10 @@ export default function Spiral ({ onUpdateNumber, num, intArr }) {
         {'Spiral!'}
       </div>
       <div className='spiralContainer'>
-        <svg width='1000' height='500' stroke='blue' strokeWidth='2'>
-          {intArr.map((int, idx) =>
-            <text key={idx} x={10 * idx} y='150' fontFamily='Verdana' fontSize='15'>
-            {int}
+        <svg width='1000' height='500'>
+          {intArr.map((elem, idx) =>
+            <text key={idx} x={elem.x} y={elem.y} fontFamily='Verdana' fontSize='12' fill='white'>
+            {elem.display}
             </text>)}
         </svg>
       </div>
@@ -32,5 +32,5 @@ export default function Spiral ({ onUpdateNumber, num, intArr }) {
 
 Spiral.propTypes = {
   onUpdateNumber: PropTypes.func.isRequired,
-  num: PropTypes.string.isRequired
+  intArr: PropTypes.array.isRequired
 }

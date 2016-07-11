@@ -1,7 +1,9 @@
 import React, { PropTypes } from 'react'
+import { Link } from 'react-router'
+
 export default function Home ({ onUpdateNumber, numberAsString }) {
   return (
-    <div>
+    <div className='home'>
       <form
         className='itemForm'
         onSubmit={e => {
@@ -17,6 +19,11 @@ export default function Home ({ onUpdateNumber, numberAsString }) {
       <div className='result'>
         {numberAsString}
       </div>
+      <Link to='/spiral' className='link'>
+        <button className='btn btn-info'>
+         {'Bonus: Spiral'}
+        </button>
+      </Link>
     </div>
   )
 }

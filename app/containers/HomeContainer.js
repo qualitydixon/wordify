@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
 import Home from '../components/Home'
 import { getGroups, isInvalidInput, remSubString, wholeNum, formatInput, capFirstChar } from '../config/helpers'
 import { convert, order } from '../config/constants'
@@ -53,9 +52,6 @@ export default class HomeContainer extends Component {
           onUpdateNumber={(e) => this.handleUpdateNumber(e)}
           numberAsString={this.convertToWords(this.state.num)}
         />
-        <Link to='/spiral' className='link'>
-          {'Spiral'}
-        </Link>
       </div>
     )
   }

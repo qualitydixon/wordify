@@ -6,7 +6,7 @@ export default class SpiralContainer extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      num: null,
+      num: 0,
       intArr: []
     }
   }
@@ -17,11 +17,15 @@ export default class SpiralContainer extends Component {
       intArr: generateInts(Number(input))
     })
   }
+  getX (int) {
+    let mult = this.state.maxSteps % 2 === 0 ? -1 : 1
+    const ans = this.state.currX + (10 * mult)
+    return ans
+  }
   render () {
     return (
       <Spiral
-        onUpdateNumber={(e) => this.handleUpdateNumber(e)}
-        num={this.state.num}
+        onUpdateNumber={e => this.handleUpdateNumber(e)}
         intArr={this.state.intArr}
       />
     )

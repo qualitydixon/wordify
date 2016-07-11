@@ -55,9 +55,47 @@ export function capFirstChar (str) {
 /* --------------------------- */
 
 export function generateInts (num) {
-  let arr = []
-  for (let i = 0; i <= num; i++) {
-    arr.push(i)
+  const delta = 30
+  let arr = [{
+    display: 0,
+    x: 500,
+    y: 250
+  }]
+  let maxX = 1
+  let maxY = 1
+  let currX = 1
+  let currY = 0
+  let dirX = 1
+  let dirY = 0
+  let isVert = false
+  for (let i = 1; i <= num; i++) {
+    arr.push({
+      display: i,
+      x: arr[i - 1].x + (delta * dirX),
+      y: arr[i - 1].y + (delta * dirY)
+    })
+    if (!isVert) {
+      currX++
+      if (currX > maxX) {
+        isVert = true
+        currX = 0
+        currY++
+        maxX += 1
+        dirX = 0
+        dirY = maxY % 2 === 0 ? -1 : 1
+      }
+    } else {
+      currY++
+      if (currY > maxY) {
+        isVert = false
+        currY = 0
+        currX++
+        maxY += 1
+        dirX = maxX % 2 === 0 ? -1 : 1
+        dirY = 0
+      }
+    }
+    console.log('x', arr[i].x)
   }
 
   return arr
