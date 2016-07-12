@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react'
+import { Link } from 'react-router'
 
 export default function Spiral ({ onUpdateNumber, intArr }) {
   return (
-    <div>
+    <div className='home'>
       <form
         className='itemForm'
         onSubmit={e => {
@@ -28,6 +29,11 @@ export default function Spiral ({ onUpdateNumber, intArr }) {
             </text>)}
         </svg>
       </div>
+      <Link to='/' className='link'>
+        <button className='btn btn-info'>
+         {'Home'}
+        </button>
+      </Link>
     </div>
   )
 }
