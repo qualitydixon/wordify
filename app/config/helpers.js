@@ -57,7 +57,6 @@ export function capFirstChar (str) {
 export function generateArray (num) {
   const delta = 30
   let arr = [{
-    display: 0,
     x: 500,
     y: 250
   }]
@@ -69,7 +68,6 @@ export function generateArray (num) {
   let dirY = 0
   for (let i = 1; i <= num; i++) {
     arr.push({
-      display: i,
       x: arr[i - 1].x + (delta * dirX),
       y: arr[i - 1].y + (delta * dirY)
     })

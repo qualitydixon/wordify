@@ -25,7 +25,7 @@ export default function Spiral ({ onUpdateNumber, intArr }) {
               y={elem.y}
               fontSize='12'
               fill='white'>
-            {elem.display}
+            {idx}
             </text>)}
         </svg>
       </div>
