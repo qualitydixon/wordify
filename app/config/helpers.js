@@ -55,44 +55,29 @@ export function capFirstChar (str) {
 /* --------------------------- */
 
 export function generateArray (num) {
-  const delta = 30
-  let arr = [{
-    display: 0,
-    x: 500,
-    y: 250
-  }]
-  let maxX = 1
-  let maxY = 1
-  let currX = 1
-  let currY = 0
-  let dirX = 1
-  let dirY = 0
+  let index = 1
+  let curr = 0
+  let dir = 1
+  let isX = true
+  let arr = [[0, 0]]
   for (let i = 1; i <= num; i++) {
-    arr.push({
-      display: i,
-      x: arr[i - 1].x + (delta * dirX),
-      y: arr[i - 1].y + (delta * dirY)
-    })
-    if (dirY === 0) {
-      currX++
-      if (currX > maxX) {
-        currX = 0
-        currY++
-        maxX += 1
-        dirX = 0
-        dirY = maxY % 2 === 0 ? -1 : 1
-      }
+    arr[i] = isX ? [(arr[i - 1][0] + 1 * dir), arr[i - 1][1]] : [arr[i - 1][0], (arr[i - 1][1] + 1 * dir)]
+    if (curr + 1 < index) {
+      curr++
     } else {
-      currY++
-      if (currY > maxY) {
-        currY = 0
-        currX++
-        maxY += 1
-        dirX = maxX % 2 === 0 ? -1 : 1
-        dirY = 0
+      if (!isX) {
+        index++
+        curr = 0
+        isX = true
+        dir *= -1
+      } else {
+        curr = 0
+        isX = false
       }
     }
   }
-
-  return arr
+  console.log(arr)
+  return arr.map((elem, idx) => {
+    return [500 + (elem[0] * 30), 250 + (elem[1] * 30)]
+  })
 }

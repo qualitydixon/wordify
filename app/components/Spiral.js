@@ -20,11 +20,11 @@ export default function Spiral ({ onUpdateNumber, intArr }) {
           {intArr.map((elem, idx) =>
             <text
               key={idx}
-              x={elem.x}
-              y={elem.y}
+              x={elem[0]}
+              y={elem[1]}
               fontSize='12'
               fill='white'>
-            {elem.display}
+            {idx}
             </text>)}
         </svg>
       </div>
