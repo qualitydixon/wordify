@@ -1,9 +1,8 @@
-import { maxLength } from './constants'
-
+import { convert, order, maxLength } from './constants'
 /*
   Splits the given number into groups of three and pushes each group to an array.
 */
-export function getGroups (num) {
+function getGroups (num) {
   let ans = []
   while (num > 0) {
     ans.push(num % 1000)
@@ -13,14 +12,14 @@ export function getGroups (num) {
   return ans
 }
 
-export function isInvalidInput (num) {
+function isInvalidInput (num) {
   const isTooLarge = Math.floor(num / 1).toString().length > maxLength
   const isNumeric = /^\d*\.?\d*$/.test(num)
 
   return (num < 0 || isTooLarge || !isNumeric)
 }
 
-export function remSubString (num) {
+function remSubString (num) {
   const rem = Number((num % 1).toFixed(2).split('.').pop())
 
   return rem === 0 ? ' dollars' : ` and ${rem}/100 dollars`
@@ -29,7 +28,7 @@ export function remSubString (num) {
 /*
   Takes in a number and extracts the integer portion.
 */
-export function wholeNum (num) {
+function wholeNum (num) {
   return Math.floor(num / 1)
 }
 
@@ -44,7 +43,7 @@ export function formatInput (str) {
   return Number(str)
 }
 
-export function capFirstChar (str) {
+function capFirstChar (str) {
   str = str.trim()
 
   return str.charAt(0).toUpperCase() + str.slice(1)
@@ -93,4 +92,28 @@ export function generateArray (num) {
   }
 
   return arr
+}
+
+export function convertToWords (num) {
+  if (num === null) { return 'Enter a number' }
+  if (isInvalidInput(num)) { return 'Not a valid entry' }
+  let ans = remSubString(num)
+  if (num < 1) { return 'Zero' + ans }
+  getGroups(wholeNum(num)).forEach((group, idx, arr) => {
+    let subString = ''
+    const hundreds = Math.floor(group / 100)
+    const tens = Math.floor(((group % 100) / 10)) * 10
+    const ones = group % 10
+    subString += hundreds > 0 ? convert[hundreds] + ' hundred ' : ''
+    if (tens >= 20) {
+      subString += convert[tens]
+      subString += ones === 0 ? '' : '-' + convert[ones]
+    } else {
+      subString += tens + ones === 0 ? '' : ' ' + convert[tens + ones]
+    }
+    subString += subString !== '' ? order[idx] : ''
+    ans = subString + ans
+  })
+
+  return capFirstChar(ans)
 }

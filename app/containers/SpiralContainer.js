@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Spiral from '../components/Spiral'
-import { generateArray } from '../config/helpers'
+import { generateArray } from '../utils/helpers'
 
 export default class SpiralContainer extends Component {
   constructor (props) {
